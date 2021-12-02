@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-yllt2d
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-yllt2d
+  namespace: my-nginx-yllt2d
+  labels:
+    name: nginx-yllt2d
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-yllt2d
+  template:
+    metadata:
+      namespace: my-nginx-yllt2d
+      labels:
+        name: nginx-yllt2d
+    spec:
+      containers:
+      - name: nginx-yllt2d
+        image: nginx
+        ports:
+        - containerPort: 80
+
